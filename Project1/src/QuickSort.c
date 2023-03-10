@@ -10,13 +10,28 @@
 #include <stdlib.h>
 #include <time.h>
 
-int partition(int *a, int s, int e);
-
-int randomized_partition(int *a, int s, int e);
-
 void quickSort(int *a, int s, int e);
 
-void swap(int *array, int a, int b);
+static int partition(int *a, int s, int e);
+
+static int randomized_partition(int *a, int s, int e);
+
+static void swap(int *array, int a, int b);
+
+/**
+ * \brief Sort an array of integers using the QuickSort algorithm.
+ *
+ * \param a The array to sort
+ * \param s start index
+ * \param e end index
+ */
+void quickSort(int *a, int s, int e) {
+   if (intCmp(s, e) < 0) {
+      int q = randomized_partition(a, s, e);
+      quickSort(a, s, q - 1);
+      quickSort(a, q + 1, e);
+   }
+}
 
 /**
  * \brief Sort an array of integers using the QuickSort algorithm.
@@ -37,7 +52,7 @@ void sort(int *array, size_t length) {
  * \param e end index
  * \result int
  */
-int partition(int *a, int s, int e) {
+static int partition(int *a, int s, int e) {
    int x = a[e]; // pivot
    int i = s - 1;
 
@@ -51,26 +66,11 @@ int partition(int *a, int s, int e) {
    return i;
 }
 
-int randomized_partition(int *a, int s, int e) {
+static int randomized_partition(int *a, int s, int e) {
    int i = rand() % (e - s + 1) +
            s; // https://www.geeksforgeeks.org/generating-random-number-range-c/
    swap(a, i, e);
    return partition(a, s, e);
-}
-
-/**
- * \brief Sort an array of integers using the QuickSort algorithm.
- *
- * \param a The array to sort
- * \param s start index
- * \param e end index
- */
-void quickSort(int *a, int s, int e) {
-   if (intCmp(s, e) < 0) {
-      int q = randomized_partition(a, s, e);
-      quickSort(a, s, q - 1);
-      quickSort(a, q + 1, e);
-   }
 }
 
 /**
@@ -80,7 +80,7 @@ void quickSort(int *a, int s, int e) {
  * \param a Element a to swap.
  * \param b Element b to swap.
  */
-void swap(int *array, int a, int b) {
+static void swap(int *array, int a, int b) {
    int tmp = array[a];
    array[a] = array[b];
    array[b] = tmp;
