@@ -26,7 +26,7 @@ static void swap(int *array, int a, int b);
  * \param e end index
  */
 void quickSort(int *a, int s, int e) {
-   if (intCmp(s, e) < 0) {
+   if (s < e) {
       int q = randomized_partition(a, s, e);
       quickSort(a, s, q - 1);
       quickSort(a, q + 1, e);

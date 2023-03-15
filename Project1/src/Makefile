@@ -17,8 +17,7 @@ CFLAGS = -Wall -Wextra -Wmissing-prototypes --pedantic -std=c99
 
 LDFLAGS = -lm
 
-all: $(TARGET_QuickSort)
-#all: $(TARGET_AdaptiveMergeSort) $(TARGET_InsertionSort) $(TARGET_MergeSort) $(TARGET_QuickSort) $(TARGET_HeapSort) 
+all: $(TARGET_AdaptiveMergeSort) $(TARGET_InsertionSort) $(TARGET_MergeSort) $(TARGET_QuickSort) $(TARGET_HeapSort) 
 clean:
 	rm -f $(OFILES_AdaptiveMergeSort) $(OFILES_HeapSort) $(OFILES_MergeSort) $(OFILES_QuickSort) $(OFILES_InsertionSort) $(TARGET_AdaptiveMergeSort) $(TARGET_HeapSort) $(TARGET_MergeSort) $(TARGET_QuickSort) $(TARGET_InsertionSort) 
 run: $(TARGET_AdaptiveMergeSort) $(TARGET_HeapSort) $(TARGET_MergeSort) $(TARGET_QuickSort) $(TARGET_InsertionSort) 
@@ -42,6 +41,6 @@ $(TARGET_InsertionSort): $(OFILES_InsertionSort)
 Array.o: Array.c Array.h
 AdaptiveMergeSort.o: AdaptiveMergeSort.c Sort.h Array.h
 QuickSort.o: QuickSort.c Sort.h Array.h
-HeapSort.o: Heapsort.c Sort.h Array.h
+HeapSort.o: HeapSort.c Sort.h Array.h
 InsertionSort.o: InsertionSort.c Sort.h Array.h
 main.o: main.c Array.h Sort.h Array.h

@@ -23,16 +23,12 @@ static void insertionSort(int *array, size_t end);
 // descending order (if descending inverse it)
 int findRun(int *array, size_t start, size_t end, size_t minSize) {
    int sub = findSubArray(array, start, end, minSize);
-   if (sub > -1) {
-      return sub;
-   } else if (sub == -1) {
+   if (sub == -1) {
       // If no subarray is found, sort from start to start + minSize - 1
-      insertionSort(array, minSize);
-      return minSize - 1;
-   } else {
-      return -1; // Error, should be unreachable
-   }
-      
+      insertionSort(&array[start], minSize);
+      return start + minSize - 1;
+   } else
+      return sub;
 }
 
 void sort(int *array, size_t length) {
@@ -54,7 +50,7 @@ int main() {
 static int findSubArray(int *array, size_t start, size_t end, size_t minSize){
     int i = start;
    // Find sub array that is sorted ascending
-   while (i < end && intCmp(array[i], array[i + 1]) <= 0)
+   while (i < end - 1 && intCmp(array[i], array[i + 1]) <= 0)
       i++;
 
    // Check if subarray is big enough
@@ -64,7 +60,7 @@ static int findSubArray(int *array, size_t start, size_t end, size_t minSize){
    // Subarray is too small, look for sub array that is sorted descending
 
    int j = start;
-   while (j < end && intCmp(array[j], array[j + 1]) > 0)
+   while (j < end - 1 && intCmp(array[j], array[j + 1]) > 0)
       j++;
 
    // Check if subarray is big enough
