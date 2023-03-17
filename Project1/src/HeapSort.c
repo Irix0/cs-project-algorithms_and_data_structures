@@ -6,6 +6,7 @@
  * ========================================================================= */
 
 #include "Sort.h"
+#include "Array.h"
 #include <stdlib.h>
 
 void max_heapify(int *A, int i, int length);
@@ -27,12 +28,12 @@ void max_heapify(int *A, int i, int length){
     int l = 2*i;
     int r = 2*i + 1;
     int largest;
-    if (l < length && A[l] > A[i])
+    if (l < length && intCmp(A[l],A[i]) > 0)//A[l] > A[i]
         largest = l;
     else 
         largest = i;
 
-    if (r<length && A[r] > A[largest])
+    if (r<length && intCmp(A[r],A[largest]) > 0) //A[r] > A[largest] 
         largest = r;
 
     if (largest != i){
