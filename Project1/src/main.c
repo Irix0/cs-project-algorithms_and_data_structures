@@ -65,7 +65,7 @@ int main(int argc, char **argv)
         int *sorted = createSortedArray(length);
         if (!sorted)
         {
-            fprintf(stderr, "Could not created sorted array. Aborting...\n");
+            fprintf(stderr, "Could not create sorted array. Aborting...\n");
             return EXIT_FAILURE;
         }
 
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
         int *decreasing = createDecreasingArray(length);
         if (!decreasing)
         {
-            fprintf(stderr, "Could not created decreasing array. Aborting...\n");
+            fprintf(stderr, "Could not create decreasing array. Aborting...\n");
             return EXIT_FAILURE;
         }
 
@@ -103,7 +103,7 @@ int main(int argc, char **argv)
         int *random = createRandomArray(length);
         if (!random)
         {
-            fprintf(stderr, "Could not created random array. Aborting...\n");
+            fprintf(stderr, "Could not create random array. Aborting...\n");
             return EXIT_FAILURE;
         }
 
@@ -122,7 +122,7 @@ int main(int argc, char **argv)
         int *almostsorted = createAlmostSortedArray(length, swapProp);
         if (!almostsorted)
         {
-            fprintf(stderr, "Could not created random array. Aborting...\n");
+            fprintf(stderr, "Could not create random array. Aborting...\n");
             return EXIT_FAILURE;
         }
 

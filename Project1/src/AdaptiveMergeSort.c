@@ -8,10 +8,9 @@
 #include "Array.h"
 #include "Sort.h"
 #include <assert.h>
-#include <stdio.h>
 #include <stdlib.h>
 
-#define MIN_SIZE 32
+#define MIN_SIZE 4
 
 int findRun(int *array, size_t start, size_t end, size_t minSize);
 
@@ -33,11 +32,11 @@ int findRun(int *array, size_t start, size_t end, size_t minSize) {
    int sub = findSubArray(array, start, end, minSize);
    if (sub == -1) {
       // If no subarray is found, sort from start to start + minSize - 1
-      if (end - start < minSize) {
+      if (start + minSize - 1 >= end) {
          insertionSort(array, start, end);
          return end;
       } else {
-         insertionSort(array, start, start + minSize - 1);
+         insertionSort(array, start, start + minSize); // problème avec cette ligne
          return start + minSize - 1;
       }
    } else
@@ -94,11 +93,13 @@ void sort(int *array, size_t length) {
             stack[stackSize - 3] - 1, aux);
       stackSize--;
    }
+
    free(aux);
    free(stack);
 
    return;
 }
+
 
 
 // Returns the index of the last element of the sorted subarray, -1 if not found

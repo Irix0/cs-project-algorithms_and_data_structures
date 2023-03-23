@@ -8,7 +8,6 @@
 #include "Array.h"
 #include "Sort.h"
 #include <stdlib.h>
-#include <time.h>
 
 void quickSort(int *a, int s, int e);
 
@@ -40,7 +39,6 @@ void quickSort(int *a, int s, int e) {
  * \param length The length of the array
  */
 void sort(int *array, size_t length) {
-   srand(time(NULL));
    quickSort(array, 0, length - 1);
 }
 
