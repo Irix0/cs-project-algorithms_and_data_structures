@@ -38,9 +38,7 @@ void quickSort(int *a, int s, int e) {
  * \param array The array to sort
  * \param length The length of the array
  */
-void sort(int *array, size_t length) {
-   quickSort(array, 0, length - 1);
-}
+void sort(int *array, size_t length) { quickSort(array, 0, length - 1); }
 
 /**
  * \brief Partition an array around a pivot.

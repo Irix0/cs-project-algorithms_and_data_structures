@@ -10,7 +10,7 @@
 #include <assert.h>
 #include <stdlib.h>
 
-#define MIN_SIZE 4
+#define MIN_SIZE 32
 
 int findRun(int *array, size_t start, size_t end, size_t minSize);
 
@@ -26,17 +26,16 @@ static void insertionSort(int *array, size_t start, size_t end);
 // descending order (if descending inverse it)
 int findRun(int *array, size_t start, size_t end, size_t minSize) {
    assert(minSize > 0);
-   if(!array)
-      return -2;
+   if (!array) return -2;
 
    int sub = findSubArray(array, start, end, minSize);
    if (sub == -1) {
       // If no subarray is found, sort from start to start + minSize - 1
       if (start + minSize - 1 >= end) {
-         insertionSort(array, start, end);
-         return end;
+         insertionSort(array, start, end - 1);
+         return end - 1;
       } else {
-         insertionSort(array, start, start + minSize); // problème avec cette ligne
+         insertionSort(array, start, start + minSize - 1);
          return start + minSize - 1;
       }
    } else
@@ -44,9 +43,7 @@ int findRun(int *array, size_t start, size_t end, size_t minSize) {
 }
 
 void sort(int *array, size_t length) {
-   if(!array)
-      return;
-
+   if (!array) return;
 
    int *stack = malloc((length / MIN_SIZE + 2) * sizeof(int)), stackSize = 1;
    stack[0] = 0;
@@ -99,8 +96,6 @@ void sort(int *array, size_t length) {
 
    return;
 }
-
-
 
 // Returns the index of the last element of the sorted subarray, -1 if not found
 static int findSubArray(int *array, size_t start, size_t end, size_t minSize) {
@@ -156,8 +151,7 @@ static void merge(int tab[], int lo, int mid, int hi, int aux[]) {
 }
 
 static void insertionSort(int *array, size_t start, size_t end) {
-   if(!array)
-      return;
+   if (!array) return;
 
    for (size_t i = start + 1; i <= end; i++) {
       size_t j = i;
