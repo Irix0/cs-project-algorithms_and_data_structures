@@ -1,14 +1,4 @@
-# projects-sda-2023
-Projets du cours "Structures des données et algorithmes"
+# INFO0902 : Projet 1 - Algorithmes de tri 
+Cours : `INFO0902 - Structures des données et algorithmes` @ `ULiège` - `2022-2023, second quadrimèstre`
 
-
-
-## Projet 1
 Rapport : https://www.overleaf.com/5276542344yptwgttcrpsy
-
-
-## Projet 2
-
-
-
-## Projet 3
